@@ -1,11 +1,11 @@
 const path = require('path');
-const { searchFiles: recursive } = require('../lib/utils');
+const searchFiles = require('../lib/utils');
 
 const dirToSearch = path.resolve(__dirname, 'testdir');
 
 describe('dirToSearch()', () => {
   it('list all directories', async () => {
-    const dirs = await recursive(dirToSearch);
+    const dirs = await searchFiles(dirToSearch);
     const expected = [
       path.resolve(__dirname, 'testdir/onetest.txt'),
       path.resolve(__dirname, 'testdir/a/test2.txt'),
@@ -17,7 +17,7 @@ describe('dirToSearch()', () => {
   });
   it('ignores specified files', async () => {
     const filesToIgnore = 'onetest*';
-    const dirs = await recursive(dirToSearch, [filesToIgnore]);
+    const dirs = await searchFiles(dirToSearch, [filesToIgnore]);
     const expected = [
       path.resolve(__dirname, 'testdir/a/test2.txt'),
       path.resolve(__dirname, 'testdir/a/test3.txt'),
@@ -28,7 +28,7 @@ describe('dirToSearch()', () => {
   });
   it('ignores all files in specified directories', async () => {
     const dirsToIgnore = '**/a';
-    const dirs = await recursive(dirToSearch, [dirsToIgnore]);
+    const dirs = await searchFiles(dirToSearch, [dirsToIgnore]);
     const expected = [
       path.resolve(__dirname, 'testdir/onetest.txt'),
       path.resolve(__dirname, 'testdir/b/test4.txt'),

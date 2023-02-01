@@ -1,6 +1,6 @@
 const deglob = require('deglob');
 
-function searchFiles(directory, ignoreGlobPatterns = [], useGitIgnore = true) {
+module.exports = function searchFiles(directory, ignoreGlobPatterns = [], useGitIgnore = true) {
   const config = { ignore: ignoreGlobPatterns, cwd: directory, useGitIgnore };
   return new Promise((resolve, reject) => {
     deglob('**/*', config, (err, files) => {
@@ -10,4 +10,3 @@ function searchFiles(directory, ignoreGlobPatterns = [], useGitIgnore = true) {
   });
 }
 
-module.exports = { searchFiles };
