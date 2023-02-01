@@ -1,4 +1,4 @@
-const { readFileSync, writeFile } =require('fs');
+const fs = require('fs');
 const path = require('path');
 const chalk = require('chalk');
 const { searchFiles } = require('./lib/utils');
@@ -109,12 +109,10 @@ ${allFiles.length} unused source files found.
   process.stdout.write(chalk.green('\n*** Unused Plugin ***\n\n'));
 
   if (this.outputFilePath) {
-    writeFile(this.outputFilePath, outputString, 'utf8', (err) => {
+    fs.writeFile(this.outputFilePath, outputString, (err) => {
       if (err) console.log(err);
       else {
-        console.log('File written successfully\n');
-        console.log('The written has the following contents:');
-        console.log(readFileSync('books.txt', 'utf8'));
+        fs.readFileSync(this.outputFilePath, 'utf8');
       }
     });
   }
