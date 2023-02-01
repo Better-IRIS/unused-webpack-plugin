@@ -20,6 +20,7 @@ module.exports = {
       // Root directory (optional)
       root: __dirname,
       failOnUnused: false,
+      outputFilePath: path.resolve(__dirname, 'UNUSED_FILES.MD'),
     }),
   ],
 };
