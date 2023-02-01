@@ -1,10 +1,10 @@
 {
   "name": "unused-webpack-plugin",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "description": "A webpack plugin to find unused modules/source files",
   "main": "index.js",
-  "repository": "https://github.com/MatthieuLemoine/unused-webpack-plugin",
-  "author": "MatthieuLemoine",
+  "repository": "https://github.com/Better-IRIS/unused-webpack-plugin",
+  "author": "IRIS",
   "license": "MIT",
   "scripts": {
     "test": "jest",
